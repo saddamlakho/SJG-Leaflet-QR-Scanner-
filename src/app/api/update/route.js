@@ -1,4 +1,3 @@
-
 import { createConnection } from '../../../../lib/db';
 import { NextResponse } from 'next/server';
 export async function PUT(request) {
@@ -12,7 +11,7 @@ export async function PUT(request) {
         { error: 'All fields are required (ID, SAP_ID, productName, Date, qr_code)' },
         { status: 400 }
       );
-    }
+     }
 
     const db = await createConnection();
 
@@ -24,10 +23,10 @@ export async function PUT(request) {
     if (result.affectedRows === 0) {
       return NextResponse.json({ error: 'Update failed, record not found' }, { status: 404 });
     }
-
+   
     return NextResponse.json({ message: 'Record updated successfully' });
-  } catch (error) {
+    } catch (error) {
     console.error('Error updating record:', error);
     return NextResponse.json({ error: error.message }, { status: 500 });
-  }
-}
+    }
+    }
